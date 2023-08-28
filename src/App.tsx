@@ -1,5 +1,5 @@
 import { useState } from "react";
-import * as sanitize from "sanitize-html";
+import sanitize from "sanitize-html";
 // import * as sanitizeHtml from "sanitize-html";
 import { marked } from "marked";
 
@@ -25,7 +25,7 @@ function App() {
           cols={100}
         ></textarea>
       </main>
-      <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+      {/* <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script> */}
     </>
   );
 }
