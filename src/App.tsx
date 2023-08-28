@@ -1,6 +1,7 @@
 import { useState } from "react";
 import * as sanitize from "sanitize-html";
 // import * as sanitizeHtml from "sanitize-html";
+import { marked } from "marked";
 
 function App() {
   const [mark, setMark] = useState("");
