@@ -1,32 +1,43 @@
 import { useState } from "react";
-import sanitize from "sanitize-html";
-// import * as sanitizeHtml from "sanitize-html";
 import { marked } from "marked";
+import DOMPurify from "dompurify";
 
 function App() {
   const [mark, setMark] = useState("");
 
-  // document.getElementById("preview").innerHTML = marked.parse(
-  //   "# Markedin the browser\n\nRendered by **marked**."
-  // );
+  const convertMD = () => {
+    const getEditor = document.getElementById("editor");
+    setMark((getEditor as HTMLInputElement)?.value);
+
+    const purify = DOMPurify();
+    const preview = document.getElementById("preview");
+
+    const parser = new DOMParser();
+    const el = purify.sanitize(marked.parse(mark));
+    const parsing = parser.parseFromString(el, "text/html");
+    console.log(el);
+
+    preview?.replaceChild(parsing.documentElement, preview.childNodes[0]);
+  };
 
   return (
-    <>
-      <h1 className="text-5xl font-bold underline">Hello world!</h1>
-      <main className="h-full bg-black flex flex-row m-10">
-        <div className="text-white" id="preview">
-          {sanitize(marked.parse(mark))}
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      <h1>MarkDown Editor</h1>
+      <main style={{ display: "flex", flexDirection: "row" }}>
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <textarea id="editor" rows={20} cols={100} />
+          <button onClick={convertMD}> Convert</button>
         </div>
-        <textarea
-          className="bg-slate-500"
-          onChange={(e) => setMark(e.target.value)}
-          id="editor"
-          rows={20}
-          cols={100}
-        ></textarea>
+        <div id="preview">
+          <p></p>
+        </div>
       </main>
-      {/* <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script> */}
-    </>
+    </div>
   );
 }
 
