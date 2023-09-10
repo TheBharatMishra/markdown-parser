@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { marked } from "marked";
 import DOMPurify from "dompurify";
 
@@ -30,11 +30,21 @@ function App() {
       <h1>MarkDown Editor</h1>
       <main style={{ display: "flex", flexDirection: "row" }}>
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <textarea id="editor" rows={20} cols={100} />
+          <textarea
+            id="editor"
+            placeholder="Enter Markdown"
+            rows={20}
+            cols={100}
+          >
+            {/* {"# Welcome People"}
+            <br />
+            {"[Github Profile](https://github.com/TheBharatMishra)"}
+            {"![hello](https://source.unsplash.com/featured/300x200)"} */}
+          </textarea>
           <button onClick={convertMD}> Convert</button>
         </div>
         <div id="preview">
-          <p></p>
+          <p>Hello</p>
         </div>
       </main>
     </div>
