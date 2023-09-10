@@ -36,10 +36,9 @@ function App() {
             rows={20}
             cols={100}
           >
-            {/* {"# Welcome People"}
-            <br />
+            {"# Welcome People"}
             {"[Github Profile](https://github.com/TheBharatMishra)"}
-            {"![hello](https://source.unsplash.com/featured/300x200)"} */}
+            {"![hello](https://source.unsplash.com/featured/300x200)"}
           </textarea>
           <button onClick={convertMD}> Convert</button>
         </div>
