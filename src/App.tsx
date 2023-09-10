@@ -35,11 +35,7 @@ function App() {
             placeholder="Enter Markdown"
             rows={20}
             cols={100}
-          >
-            {"# Welcome People"}
-            {"[Github Profile](https://github.com/TheBharatMishra)"}
-            {"![hello](https://source.unsplash.com/featured/300x200)"}
-          </textarea>
+          ></textarea>
           <button onClick={convertMD}> Convert</button>
         </div>
         <div id="preview">
